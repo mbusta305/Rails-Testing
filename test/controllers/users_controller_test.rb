@@ -5,11 +5,11 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:users)
-  end
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  #   assert_not_nil assigns(:users)
+  # end
 
   test "should get new" do
     get :new
@@ -45,5 +45,13 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to users_path
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:users)
+    assert_select 'th', 3
+    assert_select 'th', 'Name'
   end
 end
